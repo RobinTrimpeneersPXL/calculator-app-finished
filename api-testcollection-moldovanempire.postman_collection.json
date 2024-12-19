@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "5ebc295d-3982-4e51-9081-c158a37439bd",
+		"name": "api-testcollection-moldovanempire",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34785504",
+		"_collection_link": "https://moldovan-empire.postman.co/workspace/Moldovan-Empire-Workspace~9b278faa-30e2-4e85-b553-ce46a6088cea/collection/34785504-5ebc295d-3982-4e51-9081-c158a37439bd?action=share&source=collection_link&creator=34785504"
+	},
+	"item": [
+		{
+			"name": "get students",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response contains students\", function () {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an(\"array\");",
+							"    pm.expect(jsonData.length).to.be.greaterThan(0);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "2TINDEVOPS",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://devops.d-ries.be/api/students",
+					"protocol": "https",
+					"host": [
+						"devops",
+						"d-ries",
+						"be"
+					],
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get info robin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response contains expected student data\", function () {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"_id\");",
+							"    pm.expect(jsonData).to.have.property(\"name\");",
+							"    pm.expect(jsonData.name).to.eql(\"Robin\"); ",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "2TINDEVOPS",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://devops.d-ries.be/api/students/6762ee2cedd216ed5041081b",
+					"protocol": "https",
+					"host": [
+						"devops",
+						"d-ries",
+						"be"
+					],
+					"path": [
+						"api",
+						"students",
+						"6762ee2cedd216ed5041081b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Push student",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "2TINDEVOPS",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Andrei\",\n  \"age\": 21,\n  \"group\": \"Moldovan Empire\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://devops.d-ries.be/api/students",
+					"protocol": "https",
+					"host": [
+						"devops",
+						"d-ries",
+						"be"
+					],
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
